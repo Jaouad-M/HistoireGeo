@@ -6,10 +6,14 @@ const loader = new GLTFLoader();
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
+renderer.SetClearColor(0x132644);
 document.body.appendChild( renderer.domElement );
-var obj;
+
+const loader = new GLTFLoader();
+
 loader.load( './hg.glb', function ( gltf ) {
-	obj = gltf.scene
+
+	obj = gltf.scene;
 	scene.add( gltf.scene );
 
 }, undefined, function ( error ) {
@@ -18,12 +22,10 @@ loader.load( './hg.glb', function ( gltf ) {
 
 } );
 
-var light = new THREE.HemisphereLight("0xFFFFFF, 0x000000, 2");
-scene.add(light);
-camera.position.set(0, 0, 10);
-function animate(){
-	requestAnimationFrame(animate);
+function animate() {
+	requestAnimationFrame( animate );
+	obj.rotation.x = += 0.010
 	renderer.render(scene,camera);
 }
-
 animate();
+
